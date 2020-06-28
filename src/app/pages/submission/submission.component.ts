@@ -93,6 +93,7 @@ export class SubmissionComponent implements OnInit {
 
   saveViews() {
     let viewsData = this.viewsForm.value;
+    let userId = sessionStorage.getItem('competition:uuid');
     viewsData.userId = this.userId;
     if(this.userId && (viewsData.comment || viewsData.reason)) {
       // Update
@@ -102,7 +103,7 @@ export class SubmissionComponent implements OnInit {
           this.getViews(this.userId);
           this.toggleEditComment = false;
           this.toggleEditReason = false;
-          this.snackBar.open('Views updated successfully', 'CLOSE', { duration: 5000 });
+          this.snackBar.open('Overall Comment and Reason saved successfully', 'CLOSE', { duration: 5000 });
         })
       }
       // Add
@@ -112,7 +113,7 @@ export class SubmissionComponent implements OnInit {
           this.getViews(this.userId);
           this.toggleEditComment = false;
           this.toggleEditReason = false;
-          this.snackBar.open('Views Added successfully', 'CLOSE', { duration: 5000 });
+          this.snackBar.open('Overall Comment and Reason saved successfully', 'CLOSE', { duration: 5000 });
         })
       }
 

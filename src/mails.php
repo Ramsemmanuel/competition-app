@@ -17,7 +17,7 @@ if(empty($errors))
 
 	$from_email = 'no-reply@domain.com';
 	$message = "Please follow this link to reset your password:
-	https://lateliercompetition.ftech.aws.dsarena.com/#/password-reset";
+	https://localhost:3000/#/password-reset";
 	$from_name = 'No-reply';
 	$subject = 'Reset your password';
 
