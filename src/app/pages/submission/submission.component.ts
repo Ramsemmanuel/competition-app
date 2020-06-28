@@ -31,6 +31,9 @@ export class SubmissionComponent implements OnInit {
   buttonLabel: string;
   toggleEditComment: boolean = false;
   toggleEditReason: boolean = false;
+  allEntriesProcessed: boolean = false;
+  showNoticeOnced:any;
+  showDashboard: boolean = true;
 
   constructor(
     public competitionsProvider: CompetitionsService,
@@ -47,6 +50,13 @@ export class SubmissionComponent implements OnInit {
       comment: [this.viewsData ? this.viewsData.comment : null, Validators.nullValidator],
       reason: [this.viewsData ? this.viewsData.reason : null, Validators.nullValidator]
     });
+
+    //To show/hide the notice for judge
+    this.showNoticeOnced = sessionStorage.getItem('competition:notice');
+    if(!this.showNoticeOnced){
+      this.showDashboard = false;
+      sessionStorage.setItem('competition:notice','shown');
+    }
   }
 
   ngOnInit() {
@@ -76,6 +86,7 @@ export class SubmissionComponent implements OnInit {
         this.initialiseArtworks();
         this.getAllVotes();
         this.getUsersFromEntries();
+        
         // this.viewsForm.patchValue({comments: this.userData.comments ? this.userData.comments : '' });
 
       }
@@ -138,6 +149,7 @@ export class SubmissionComponent implements OnInit {
       this.unApprovedEntries = this.votesData.filter((item) => item.vote === 'NO');
       this.processedEntries = this.approvedEntries.length + this.unApprovedEntries.length;
       this.remainingEntries = this.entriesData.length - (this.approvedEntries.length + this.unApprovedEntries.length);
+      this.allEntriesProcessed = this.processedEntries == this.entriesData.length;
     });
   }
 
@@ -198,5 +210,8 @@ export class SubmissionComponent implements OnInit {
         this.getAllVotes();
       });
     }
+  }
+  onHideNotice = function () {
+    this.showDashboard = true;
   }
 }
