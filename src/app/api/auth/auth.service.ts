@@ -68,6 +68,7 @@ export class AuthService {
   }
 
   logoutUser() {
+    sessionStorage.removeItem('competition:notice');
     return sessionStorage.removeItem('competition:uuid');
   }
 
