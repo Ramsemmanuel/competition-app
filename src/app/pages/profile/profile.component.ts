@@ -151,7 +151,11 @@ export class ProfileComponent implements OnInit {
         this.competitionsProvider.enterCompetition(entryData).subscribe((data) => {
           this.snackBar.open('Entry sumitted successfully', 'CLOSE', { duration: 5000 });
           this.getUserWork();
-          this.getUser()
+          this.getUser();
+          this.authProvider.sendEmailForEntrySubmission(this.userData.email).subscribe((data)=> {
+            //this.snackBar.open(`A link to reset password was sent to ${ this.form.value.email }, please check it`, 'CLOSE', { duration: 5000 });
+            console.log('Email sent with confirmation')
+          })
         })
       }
     })
