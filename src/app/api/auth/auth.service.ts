@@ -25,6 +25,7 @@ export class AuthService {
   API_URL: 'http://localhost:3000';
 //API_URL: 'http://sightgroupsa.co.za'
   private emailUrl = 'http://sightgroupsa.co.za/mails.php';
+  private entrySubmissionEmailUrl = 'http://sightgroupsa.co.za/entrysubmissionmails.php';
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -93,6 +94,22 @@ export class AuthService {
         }),
         catchError(error => {
           console.log('Sending email got error', error);
+          return throwError(error)
+        })
+      );
+  }
+
+  sendEmailForEntrySubmission(message: PasswordResetModel): Observable<PasswordResetModel> | any {
+    console.log('Send email for entry submission : sending email started...');
+    let mailObj = { email: message }
+      return this.httpClient.post(this.entrySubmissionEmailUrl, mailObj, {responseType: 'text'})
+      .pipe(
+        map(response => {
+          console.log('Send email for entry submission : sending email was successfull',response);
+          return response;
+        }),
+        catchError(error => {
+          console.log('Send email for entry submission : sending email got error', error);
           return throwError(error)
         })
       );
