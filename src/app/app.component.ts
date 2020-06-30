@@ -87,19 +87,19 @@ export class AppComponent implements OnInit {
     if(this.loggedInUser.userType == "JUDGE")
       this.confirmDialog.openConfirmDialog('Logout', 'logout', "testtest").subscribe(res => {
         if(res) {
-          out();
+          out(this);
         }
       });
     else
-      out();
+      out(this);
 
-    function out(){
-        this.toggleMenu = false;
-        this.authData.logoutUser()
-        this.loggedInUser = null;
-        this.router.navigate(['/login']);
-        this.loadUserData();
-        this.snackBar.open('You have been logged out', 'CLOSE', {
+    function out(curr){
+      curr.toggleMenu = false;
+      curr.authData.logoutUser()
+      curr.loggedInUser = null;
+      curr.router.navigate(['/login']);
+      curr.loadUserData();
+      curr.snackBar.open('You have been logged out', 'CLOSE', {
           duration: 5000,
         });
     }
