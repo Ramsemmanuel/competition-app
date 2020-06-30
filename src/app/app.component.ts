@@ -65,6 +65,7 @@ export class AppComponent implements OnInit {
         //this.loggedInUser.firstName = data[0].userType === 'JUDGE' ? 'JUDGE' :  data[0].firstName; 
         this.loggedInUser.firstName = data[0].firstName; 
         this.loggedInUser.lastName = data[0].lastName; 
+        this.loggedInUser.userType = data[0].userType; 
         this.router.navigate(data[0].userType === 'JUDGE' ? ['/submissions'] : ['/profile'] );
         this.loadingUser = false;
         if(!data) {
@@ -82,8 +83,17 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.confirmDialog.openConfirmDialog('Logout', 'logout', "testtest").subscribe(res => {
-      if(res) {
+
+    if(this.loggedInUser.userType == "JUDGE")
+      this.confirmDialog.openConfirmDialog('Logout', 'logout', "testtest").subscribe(res => {
+        if(res) {
+          out();
+        }
+      });
+    else
+      out();
+
+    function out(){
         this.toggleMenu = false;
         this.authData.logoutUser()
         this.loggedInUser = null;
@@ -92,7 +102,6 @@ export class AppComponent implements OnInit {
         this.snackBar.open('You have been logged out', 'CLOSE', {
           duration: 5000,
         });
-      }
-    });
+    }
   }
 }
