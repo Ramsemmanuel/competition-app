@@ -45,6 +45,18 @@ if(empty($errors))
 
 	$email_body = $content;
 
+
+	$host = "mail.sightgroupsa..co.za";
+	$username = "sightgroupsaco";
+	$password = "Ramsen@12";
+	
+	$smtp = Mail::factory('smtp',
+	  array ('host' => $host,
+		'auth' => true,
+		'username' => $username,
+		'password' => $password));
+
+
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 	$headers .= "Access-Control-Allow-Origin: *";
@@ -52,7 +64,7 @@ if(empty($errors))
 	$headers .= "From: $from_email\n";
 	$headers .= "Reply-To: $from_email";
 
-	mail($to_email,$email_subject,$email_body,$headers);
+	mail = $smtp->send($to_email,$email_subject,$email_body,$headers);
 
 	$response_array['status'] = 'success';
 	$response_array['from'] = $from_email;
