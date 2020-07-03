@@ -37,6 +37,9 @@ import { SubmissionComponent } from './pages/submission/submission.component';
 import { PasswordResetComponent } from './pages/auth/password-reset/password-reset.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog/confirm-logout-dialog.component';
+import { SubmissionReviewComponent } from './pages/submission-review/submission-review.component';
+import { SubmissionReviewCompletedComponent } from './pages/submission-review-completed/submission-review-completed.component';
+import { SubmissionCompletedDialogComponent } from './components/submission-completed-dialog/submission-completed-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
     ConfirmDeleteDialogComponent,
     SubmissionComponent,
     PasswordResetComponent,
-    ConfirmLogoutDialogComponent
+    ConfirmLogoutDialogComponent,
+    SubmissionReviewComponent,
+    SubmissionReviewCompletedComponent,
+    SubmissionCompletedDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +96,8 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
     EnterCompetitionComponent,
     AddWorkComponent,
     ConfirmDeleteDialogComponent,
-    ConfirmLogoutDialogComponent
+    ConfirmLogoutDialogComponent,
+    SubmissionCompletedDialogComponent
   ],
   bootstrap: [AppComponent]
 })

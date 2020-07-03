@@ -5,16 +5,15 @@ import { IdGeneratorService } from 'src/app/providers/id-generator/id-generator.
 import { AuthService } from 'src/app/api/auth/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ConfirmDialogService } from 'src/app/providers/modals/confirm-dialog.service';
 
 declare var UIkit;
 
 @Component({
-  selector: 'app-submission',
-  templateUrl: './submission.component.html',
-  styleUrls: ['./submission.component.scss']
+  selector: 'app-submission-review',
+  templateUrl: './submission-review.component.html',
+  styleUrls: ['./submission-review.component.scss']
 })
-export class SubmissionComponent implements OnInit {
+export class SubmissionReviewComponent implements OnInit {
   entriesData: any;
   artworkData: any;
   votesData: any;
@@ -33,9 +32,7 @@ export class SubmissionComponent implements OnInit {
   toggleEditComment: boolean = false;
   toggleEditReason: boolean = false;
   allEntriesProcessed: boolean = false;
-  showNoticeOnced:any;
-  showDashboard: boolean = true;
-
+  
   constructor(
     public competitionsProvider: CompetitionsService,
     public usersProvider: AuthService,
@@ -44,7 +41,7 @@ export class SubmissionComponent implements OnInit {
     private idGeneratorProvider: IdGeneratorService,
     private formBuilder: FormBuilder,
     public authProvider: AuthService,
-    private confirmDialog: ConfirmDialogService
+
     
   ) {
     this.viewsForm = this.formBuilder.group({
@@ -52,12 +49,7 @@ export class SubmissionComponent implements OnInit {
       reason: [this.viewsData ? this.viewsData.reason : null, Validators.nullValidator]
     });
 
-    //To show/hide the notice for judge
-    this.showNoticeOnced = sessionStorage.getItem('competition:notice');
-    if(!this.showNoticeOnced){
-      this.showDashboard = false;
-      sessionStorage.setItem('competition:notice','shown');
-    }
+    
   }
 
   ngOnInit() {
@@ -115,6 +107,7 @@ export class SubmissionComponent implements OnInit {
           this.getViews(this.userId);
           this.toggleEditComment = false;
           this.toggleEditReason = false;
+          this.router.navigate(['/submission/complete']);
           this.snackBar.open('Overall Comment and Reason saved successfully', 'CLOSE', { duration: 5000 });
         })
       }
@@ -125,11 +118,16 @@ export class SubmissionComponent implements OnInit {
           this.getViews(this.userId);
           this.toggleEditComment = false;
           this.toggleEditReason = false;
+          this.router.navigate(['/submission/complete']);
           this.snackBar.open('Overall Comment and Reason saved successfully', 'CLOSE', { duration: 5000 });
         })
       }
 
     }
+  }
+
+  reviewSubmission() {
+    this.router.navigate(['/submissions']);
   }
 
   initialiseEntries() {
@@ -152,16 +150,6 @@ export class SubmissionComponent implements OnInit {
       this.processedEntries = this.approvedEntries.length + this.unApprovedEntries.length;
       this.remainingEntries = this.entriesData.length - (this.approvedEntries.length + this.unApprovedEntries.length);
       this.allEntriesProcessed = this.processedEntries == this.entriesData.length;
-
-      //Show review completion popup
-      if(this.allEntriesProcessed)
-        this.confirmDialog.openConfirmDialog('Finalise adjudication', 'reviewcomplete', "send any thing here").subscribe(res => {
-          if(res) {
-            this.router.navigate(['/submission/comments']);
-          }
-        });
-
-
     });
   }
 

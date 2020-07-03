@@ -5,6 +5,8 @@ import { ProfileComponent } from '../pages/profile/profile.component';
 import { RegisterComponent } from '../pages/auth/register/register.component';
 import { SubmissionComponent } from '../pages/submission/submission.component';
 import { PasswordResetComponent } from '../pages/auth/password-reset/password-reset.component';
+import {SubmissionReviewComponent} from '../pages/submission-review/submission-review.component';
+import {SubmissionReviewCompletedComponent} from '../pages/submission-review-completed/submission-review-completed.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     path: 'submissions',
     component: SubmissionComponent
+  },
+  {
+    path: 'submission/comments',
+    component: SubmissionReviewComponent
+  },
+  {
+    path: 'submission/complete',
+    component: SubmissionReviewCompletedComponent
   },
   {
     path: 'password-reset/:email',
