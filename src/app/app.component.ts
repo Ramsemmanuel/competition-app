@@ -66,6 +66,11 @@ export class AppComponent implements OnInit {
         this.loggedInUser.firstName = data[0].firstName; 
         this.loggedInUser.lastName = data[0].lastName; 
         this.loggedInUser.userType = data[0].userType; 
+        
+        //Don't re-rout if urls are like below ones
+        if(this.router.url == '/submission/comments' || this.router.url == '/submission/complete')
+          return;
+
         this.router.navigate(data[0].userType === 'JUDGE' ? ['/submissions'] : ['/profile'] );
         this.loadingUser = false;
         if(!data) {
@@ -81,7 +86,7 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
+y
   logout() {
 
     if(this.loggedInUser.userType == "JUDGE")
