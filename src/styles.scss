@@ -111,7 +111,7 @@ body { margin: 0; font-family: 'Source Sans Pro', sans-serif; }
           
         }
     }
-
+    
     .main-container {
         max-width: 800px;
         margin-left: auto;
@@ -180,3 +180,12 @@ a {
     height: 101px;
     margin-left: 70px;
  }
+ hr, .uk-hr {
+    
+    border: none !important;
+    border-top:  none !important;
+
+}
+.uk-icon {
+    color: #960528;
+}

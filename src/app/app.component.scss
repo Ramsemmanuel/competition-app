@@ -21,7 +21,16 @@
     margin-top:70px;
     overflow: hidden;
 }
+.border{
+    border: none !important;
+    border-top:  none !important;
+}
+.hr {
+    display:none !important;
+    border: none !important;
+    border-top:  none !important;
 
+}
 
 .main-navbar {
     height: 74px;

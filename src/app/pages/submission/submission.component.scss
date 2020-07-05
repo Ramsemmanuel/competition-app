@@ -83,3 +83,30 @@
     padding-right: 20%;
     text-align: center;
 }
+.group-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #960528;
+}
+.count-title {
+    color: #960528;
+    font-weight: 700;
+}
+.count-border {
+    border-right: #960528 solid 2px;
+}
+.inner-container {
+    border-left: none;
+    border-top:  #960528 solid 1px;
+}
+.border{
+    border: none;
+    border-top: #960528 solid 2px !important;
+    border-bottom: #960528 solid 2px !important;
+}
+hr, .uk-hr{
+    
+    border: none !important;
+    border-top:  none !important;
+
+}
