@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="uk-position-relative uk-visible-toggle entries-container" tabindex="-1" uk-slider="center: true;finite: false;" *ngIf="entriesData?.length > 0">
+  <div class="uk-position-relative uk-visible-toggle entries-container" tabindex="-1" uk-slider="center: true;finite: true;" *ngIf="entriesData?.length > 0">
     <ul class="uk-slider-items uk-grid" uk-height-viewport="offset-top: true; offset-bottom: 30">
         <li class="uk-width-3-4 artwork-item" *ngFor="let entry of entriesData">
 

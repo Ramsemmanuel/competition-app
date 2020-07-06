@@ -35,6 +35,7 @@ export class SubmissionComponent implements OnInit {
   allEntriesProcessed: boolean = false;
   showNoticeOnced:any;
   showDashboard: boolean = true;
+  voteCasted: boolean;
 
   constructor(
     public competitionsProvider: CompetitionsService,
@@ -154,7 +155,7 @@ export class SubmissionComponent implements OnInit {
       this.allEntriesProcessed = this.processedEntries == this.entriesData.length;
 
       //Show review completion popup
-      if(this.allEntriesProcessed)
+      if(this.allEntriesProcessed && this.voteCasted)
         this.confirmDialog.openConfirmDialog('Finalise adjudication', 'reviewcomplete', "send any thing here").subscribe(res => {
           if(res) {
             this.router.navigate(['/submission/comments']);
@@ -209,6 +210,7 @@ export class SubmissionComponent implements OnInit {
         this.initialiseEntries();
         this.initialiseArtworks();
         this.getAllVotes();
+        this.voteCasted = true;
       });
     }
     else {
@@ -220,6 +222,7 @@ export class SubmissionComponent implements OnInit {
         this.initialiseEntries();
         this.initialiseArtworks();
         this.getAllVotes();
+        this.voteCasted = true;
       });
     }
   }
