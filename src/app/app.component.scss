@@ -18,10 +18,19 @@
 
 .main-container {
     background-color: white;
-    margin-top:70px;
+    margin-top:26px;
     overflow: hidden;
 }
+.border{
+    border: none !important;
+    border-top:  none !important;
+}
+.hr {
+    display:none !important;
+    border: none !important;
+    border-top:  none !important;
 
+}
 
 .main-navbar {
     height: 74px;
