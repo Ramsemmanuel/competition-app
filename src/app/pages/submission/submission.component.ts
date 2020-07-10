@@ -36,6 +36,8 @@ export class SubmissionComponent implements OnInit {
   showNoticeOnced:any;
   showDashboard: boolean = true;
   voteCasted: boolean;
+  adjudicationCompletion: Date = new Date('18-Jul-2020');
+  daysLeft: number;
 
   constructor(
     public competitionsProvider: CompetitionsService,
@@ -88,7 +90,7 @@ export class SubmissionComponent implements OnInit {
         this.initialiseArtworks();
         this.getAllVotes();
         this.getUsersFromEntries();
-        
+        this.showDaysLeft();
         // this.viewsForm.patchValue({comments: this.userData.comments ? this.userData.comments : '' });
 
       }
@@ -154,6 +156,7 @@ export class SubmissionComponent implements OnInit {
       this.remainingEntries = this.entriesData.length - (this.approvedEntries.length + this.unApprovedEntries.length);
       this.allEntriesProcessed = this.processedEntries == this.entriesData.length;
 
+      
       //Show review completion popup
       if(this.allEntriesProcessed && this.voteCasted)
         this.confirmDialog.openConfirmDialog('Finalise adjudication', 'reviewcomplete', "send any thing here").subscribe(res => {
@@ -164,6 +167,23 @@ export class SubmissionComponent implements OnInit {
 
 
     });
+  }
+
+  showDaysLeft() {
+    //Show days left
+    var adjudicationCompletionDate =  this.adjudicationCompletion.getDate();
+    var adjudicationCompletionMonth =  this.adjudicationCompletion.getMonth();
+    var adjudicationCompletionYear =  this.adjudicationCompletion.getFullYear();
+
+    var today = new Date();
+
+    var todayDate =  today.getDate();
+    var todayMonth =  today.getMonth();
+    var todayYear =  today.getFullYear();
+
+    if(todayYear <= adjudicationCompletionYear && todayMonth <= adjudicationCompletionMonth && todayDate <= adjudicationCompletionDate)
+    this.daysLeft = adjudicationCompletionDate - todayDate ;
+
   }
 
   getUserDetails(id) {
