@@ -37,7 +37,7 @@ export class SubmissionComponent implements OnInit {
   showDashboard: boolean = true;
   voteCasted: boolean;
   adjudicationCompletion: Date = new Date('18-Jul-2020');
-  daysLeft: number;
+  daysLeft: number = 0;
 
   constructor(
     public competitionsProvider: CompetitionsService,

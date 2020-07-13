@@ -68,6 +68,10 @@ export class AuthService {
     return this.httpClient.put(`http://localhost:3000/update-user`, userData)
   }
 
+  searchUser(criteria) {
+    return this.httpClient.post(`http://localhost:3000/usersearch`,criteria);
+  }
+
   logoutUser() {
     sessionStorage.removeItem('competition:notice');
     return sessionStorage.removeItem('competition:uuid');

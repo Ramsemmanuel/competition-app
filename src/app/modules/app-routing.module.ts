@@ -7,6 +7,7 @@ import { SubmissionComponent } from '../pages/submission/submission.component';
 import { PasswordResetComponent } from '../pages/auth/password-reset/password-reset.component';
 import {SubmissionReviewComponent} from '../pages/submission-review/submission-review.component';
 import {SubmissionReviewCompletedComponent} from '../pages/submission-review-completed/submission-review-completed.component';
+import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboard.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'password-reset/:email',
     component: PasswordResetComponent
+  },
+  {
+    path :'admin',
+    component: AdminDashboardComponent
   }
 ];
 
