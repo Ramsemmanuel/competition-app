@@ -46,13 +46,15 @@ if(empty($errors))
 	$email_body = $content;
 
 
-	$host = "mail.sightgroupsa..co.za";
+	$host = "mail.sightgroupsa.co.za";
+	$port ="465";
 	$username = "sightgroupsaco";
 	$password = "Ramsen@12";
 	
 	$smtp = Mail::factory('smtp',
 	  array ('host' => $host,
 		'auth' => true,
+		'port' => $port,
 		'username' => $username,
 		'password' => $password));
 
