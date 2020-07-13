@@ -40,6 +40,10 @@ import { ConfirmLogoutDialogComponent } from './components/confirm-logout-dialog
 import { SubmissionReviewComponent } from './pages/submission-review/submission-review.component';
 import { SubmissionReviewCompletedComponent } from './pages/submission-review-completed/submission-review-completed.component';
 import { SubmissionCompletedDialogComponent } from './components/submission-completed-dialog/submission-completed-dialog.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminJudgeSearchComponent } from './pages/admin-judge-search/admin-judge-search.component';
+import { AdminJudgeProfileComponent } from './pages/admin-judge-profile/admin-judge-profile.component';
+import {DataTableModule} from "angular-6-datatable";
 
 @NgModule({
   declarations: [
@@ -59,7 +63,10 @@ import { SubmissionCompletedDialogComponent } from './components/submission-comp
     ConfirmLogoutDialogComponent,
     SubmissionReviewComponent,
     SubmissionReviewCompletedComponent,
-    SubmissionCompletedDialogComponent
+    SubmissionCompletedDialogComponent,
+    AdminDashboardComponent,
+    AdminJudgeSearchComponent,
+    AdminJudgeProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +88,7 @@ import { SubmissionCompletedDialogComponent } from './components/submission-comp
     MaterialModule,
 
     MatSelectCountryModule,
+    DataTableModule,
   ],
   providers: [
     AngularFirestore,

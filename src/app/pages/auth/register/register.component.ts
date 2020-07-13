@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/api/auth/auth.service';
 import { Router } from '@angular/router';
 import { Country } from '@angular-material-extensions/select-country';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
+import { selectedCountriesData } from 'src/app/data/country-list/selected-countries';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,7 @@ export class RegisterComponent implements OnInit {
   loading: boolean = false;
   form: FormGroup;
   submitted: boolean;
+  public countriesData: any[] = selectedCountriesData;
   
   constructor(
     public authService: AuthService,
@@ -33,9 +35,13 @@ export class RegisterComponent implements OnInit {
       terms: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
+      nationality: ['', Validators.nullValidator],
+      dateAdded: [(new Date()).toLocaleDateString(), Validators.nullValidator],
     }, {
       validator: MustMatch('password', 'confirmPassword')
     })
+
+    this.form.get('nationality').setValue("");
   }
 
   ngOnInit() {

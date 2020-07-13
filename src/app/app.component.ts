@@ -71,6 +71,11 @@ export class AppComponent implements OnInit {
         if(this.router.url == '/submission/comments' || this.router.url == '/submission/complete')
           return;
 
+        if(data[0].userType === 'ADMINISTRATOR'){
+          this.router.navigate(['/admin'] );
+          return;
+        }
+        
         this.router.navigate(data[0].userType === 'JUDGE' ? ['/submissions'] : ['/profile'] );
         this.loadingUser = false;
         if(!data) {

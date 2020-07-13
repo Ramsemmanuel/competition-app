@@ -57,6 +57,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   updateProfile() {
+    debugger;
     this.userData = Object.assign(this.data , this.form.value);
     if(this.userData.id) {
       this.userData.nationality = this.userData.nationality

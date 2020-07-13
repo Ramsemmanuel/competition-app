@@ -116,6 +116,7 @@
       <button matInput #reason #comment class="btn btn-outline-primary" [disabled]="viewsForm.pristine && !allEntriesProcessed" (click)="saveViews()">Submit</button>
     </div>
   </form>
+  <div *ngIf="!allEntriesProcessed" style="text-align: center;padding-top: 30px;font-size: 20px;color: #960528;padding-left: 40px;"><span>..you have <b>{{daysLeft}} days left</b> to complete your adjudication</span></div>
 </div>
 <div *ngIf="!showDashboard" style="padding: 10%;">
   <h2 style="width: 100%; color: #4a4848;">Important Notice</h2>
