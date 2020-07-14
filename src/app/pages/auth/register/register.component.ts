@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.loading = true;
+    this.form.value.userGroup = this.GetGroup(this.form.value.nationality)
     this.authService.signupUser(this.form.value)
     .subscribe(authData => {
       console.log(authData);
@@ -76,6 +77,10 @@ export class RegisterComponent implements OnInit {
       this.snackBar.open(error.message, 'CLOSE', { duration: 5000 });
       this.loading = false;
     });
+    }
+
+    GetGroup(nationality){
+      return selectedCountriesData.filter(c=>c.name_official == nationality)[0].group;
     }
 
 }
