@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { selectedCountriesData } from 'src/app/data/country-list/selected-countries';
 import { AuthService } from 'src/app/api/auth/auth.service';
 import { MatSnackBar } from '@angular/material';
-import {DataTableModule} from "angular-6-datatable";
+import * as XLSX from 'xlsx';  
 
 @Component({
   selector: 'app-admin-judge-search',
@@ -12,6 +12,7 @@ import {DataTableModule} from "angular-6-datatable";
 })
 export class AdminJudgeSearchComponent implements OnInit {
 
+  @ViewChild('TABLE', { static: false }) TABLE: ElementRef;  
   viewsForm: FormGroup;
   viewsData: any;
   public countriesData: any[] = selectedCountriesData;
@@ -52,6 +53,17 @@ export class AdminJudgeSearchComponent implements OnInit {
 
     public Back(){
       this.editing = false;
+    }
+
+    public ExportTOExcel() {  
+      const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);  
+      /* hide second column */
+      ws['!cols'] = [];
+      ws['!cols'][0] = { hidden: true };
+      ws['!cols'][6] = { hidden: true };
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();  
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  
+      XLSX.writeFile(wb, 'search_result.xlsx');  
     }
 
 }

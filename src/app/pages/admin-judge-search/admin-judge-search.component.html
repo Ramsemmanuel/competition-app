@@ -70,7 +70,7 @@
                             <div class="result-count">
                                 <div class="group-btn">
                                     <button class="btn-delete" type="reset">RESET</button>
-                                    <button class="btn-search" (click)="OnSearch()">SEARCH</button>
+                                    <button class="btn btn-primary" (click)="OnSearch()">SEARCH</button>
                                     <span *ngIf="loading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                                 </div>
                             </div>
@@ -82,7 +82,14 @@
             </form>
         </div>
 
-        <div class="table-responsive" style="margin-top: 20px;">
+        
+        <div class="table-responsive" style="margin-top: 20px;" #TABLE #table>
+            <div style="padding-bottom: 10px;padding-top: 10px;">  
+                <div class="row">  
+                  <div class="col-sm-12">  
+                    <button *ngIf="mf.data && mf.data.length > 0" (click)="ExportTOExcel()" class="btn btn-primary" style="float: right; margin-right:10px ;">Export</button> </div>  
+                </div>  
+            </div> 
             <table class="table-striped table table-condensed  ff-family data-table user-list-table" [mfData]="dtData" #mf="mfDataTable" [mfRowsOnPage]="10">
             <!--Table head-->
             <thead>

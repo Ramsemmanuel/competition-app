@@ -38,6 +38,7 @@ export class SubmissionComponent implements OnInit {
   voteCasted: boolean;
   adjudicationCompletion: Date = new Date('18-Jul-2020');
   daysLeft: number = 0;
+  userGroup:any;
 
   constructor(
     public competitionsProvider: CompetitionsService,
@@ -91,6 +92,7 @@ export class SubmissionComponent implements OnInit {
         this.getAllVotes();
         this.getUsersFromEntries();
         this.showDaysLeft();
+        this.userGroup = data[0].userGroup;
         // this.viewsForm.patchValue({comments: this.userData.comments ? this.userData.comments : '' });
 
       }
