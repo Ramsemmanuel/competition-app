@@ -10,7 +10,8 @@ export const selectedCountriesData = [
         "flag_128": "MZ-128.png",
         "latitude": "-19.07617816",
         "longitude": "33.81570282",
-        "zoom": "5"
+        "zoom": "5",
+        "group":"A"
     },
     {
         "id": "152",
@@ -23,7 +24,8 @@ export const selectedCountriesData = [
         "flag_128": "ZA-128.png",
         "latitude": "-27.17706863",
         "longitude": "24.50856092",
-        "zoom": "5"
+        "zoom": "5",
+        "group":"A"
     },
     {
         "id": "171",
@@ -36,7 +38,8 @@ export const selectedCountriesData = [
         "flag_128": "UG-128.png",
         "latitude": "1.54760620",
         "longitude": "32.44409759",
-        "zoom": "7"
+        "zoom": "7",
+        "group":"A"
     },
     {
         "id": "179",
@@ -49,7 +52,8 @@ export const selectedCountriesData = [
         "flag_128": "ZM-128.png",
         "latitude": "-13.01812188",
         "longitude": "28.33274444",
-        "zoom": "6"
+        "zoom": "6",
+        "group":"A"
     },
     {
         "id": "105",
@@ -62,7 +66,8 @@ export const selectedCountriesData = [
         "flag_128": "MU-128.png",
         "latitude": "-20.28368188",
         "longitude": "57.56588291",
-        "zoom": "10"
+        "zoom": "10",
+        "group":"B"
     },
     {
         "id": "120",
@@ -75,7 +80,8 @@ export const selectedCountriesData = [
         "flag_128": "NG-128.png",
         "latitude": "9.02165273",
         "longitude": "7.82933373",
-        "zoom": "6"
+        "zoom": "6",
+        "group":"B"
     },
     {
         "id": "145",
@@ -88,7 +94,8 @@ export const selectedCountriesData = [
         "flag_128": "SC-128.png",
         "latitude": "-4.68053204",
         "longitude": "55.49061371",
-        "zoom": "11"
+        "zoom": "11",
+        "group":"B"
     },
     {
         "id": "193",
@@ -101,7 +108,8 @@ export const selectedCountriesData = [
         "flag_128": "TZ-128.png",
         "latitude": "-6.37551085",
         "longitude": "34.85587302",
-        "zoom": "6"
+        "zoom": "6",
+        "group":"B"
     },
     {
         "id": "22",
@@ -114,7 +122,8 @@ export const selectedCountriesData = [
         "flag_128": "BW-128.png",
         "latitude": "-22.18279485",
         "longitude": "24.22344422",
-        "zoom": "6"
+        "zoom": "6",
+        "group":"C"
     },
     {
         "id": "63",
@@ -127,7 +136,8 @@ export const selectedCountriesData = [
         "flag_128": "GH-128.png",
         "latitude": "7.69154199",
         "longitude": "-1.29234904",
-        "zoom": "7"
+        "zoom": "7",
+        "group":"C"
     },
     {
         "id": "84",
@@ -140,7 +150,8 @@ export const selectedCountriesData = [
         "flag_128": "KE-128.png",
         "latitude": "0.19582452",
         "longitude": "37.97212297",
-        "zoom": "6"
+        "zoom": "6",
+        "group":"C"
     },
     {
         "id": "113",
@@ -153,6 +164,7 @@ export const selectedCountriesData = [
         "flag_128": "NA-128.png",
         "latitude": "-22.70965620",
         "longitude": "16.72161918",
-        "zoom": "6"
+        "zoom": "6",
+        "group":"C"
     }
 ]

@@ -1,6 +1,6 @@
 <div *ngIf="showDashboard">
   <hr style="margin: -15px -15px; border-bottom: #960528 solid 2px !important;">
-  <h2 class="uk-text-center group-title">You are assigned to Group A</h2>
+  <h2 class="uk-text-center group-title">You are assigned to Group {{userGroup}}</h2>
   <hr style="margin: 0 -16px; border-bottom: #960528 solid 2px !important;">
 
   <div class="uk-text-center uk-margin-large" *ngIf="entriesData?.length < 1">
