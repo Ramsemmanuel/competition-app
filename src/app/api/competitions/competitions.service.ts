@@ -25,8 +25,8 @@ export class CompetitionsService {
   ) {
   }
 
-    getArtworks() {
-      return this.httpClient.get('http://localhost:3000/artworks/')
+    getArtworks(group:string) {
+      return this.httpClient.get('http://localhost:3000/artworks?group='+group)
     }
 
     getUserWork(user) {
@@ -86,9 +86,10 @@ export class CompetitionsService {
       return this.httpClient.post('http://localhost:3000/user-entries/', {userId: this.userId});
     }
 
-    getAllEntries() {
-      return this.httpClient.get('http://localhost:3000/entries/');
+    getAllEntries(group:string) {
+      return this.httpClient.get('http://localhost:3000/entries?group='+group);
     }
+    
     updateEntry(data) {
       return this.httpClient.put('http://localhost:3000/update-entry/', data);
     }
@@ -103,8 +104,8 @@ export class CompetitionsService {
     addVote(data) {
       return this.httpClient.post('http://localhost:3000/add-vote/', data);
     }
-    getAllVotes() {
-      return this.httpClient.get('http://localhost:3000/votes/');
+    getAllVotes(group) {
+      return this.httpClient.get('http://localhost:3000/votes?group='+group);
     }
 
 

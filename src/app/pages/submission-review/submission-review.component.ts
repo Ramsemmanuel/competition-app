@@ -32,6 +32,7 @@ export class SubmissionReviewComponent implements OnInit {
   toggleEditComment: boolean = false;
   toggleEditReason: boolean = false;
   allEntriesProcessed: boolean = false;
+  userGroup:any;
   
   constructor(
     public competitionsProvider: CompetitionsService,
@@ -74,11 +75,13 @@ export class SubmissionReviewComponent implements OnInit {
   getUser() {
     this.usersProvider.getLoggedInUser().subscribe((data)=> {
       if(data[0]) {
+        this.userGroup = data[0].userGroup;
         this.getViews(data[0].id)
         this.initialiseEntries();
         this.initialiseArtworks();
         this.getAllVotes();
         this.getUsersFromEntries();
+        
         
         // this.viewsForm.patchValue({comments: this.userData.comments ? this.userData.comments : '' });
 
@@ -131,19 +134,19 @@ export class SubmissionReviewComponent implements OnInit {
   }
 
   initialiseEntries() {
-    this.competitionsProvider.getAllEntries().subscribe((data) => {
+    this.competitionsProvider.getAllEntries(this.userGroup).subscribe((data) => {
       this.entriesData = this.groupByUser(data, 'userId');
     });
   }
 
   initialiseArtworks() {
-    this.competitionsProvider.getArtworks().subscribe((data) => {
+    this.competitionsProvider.getArtworks(this.userGroup).subscribe((data) => {
       this.artworkData = data;
     });
   }
 
   getAllVotes() {
-    this.competitionsProvider.getAllVotes().subscribe((data) => {
+    this.competitionsProvider.getAllVotes(this.userGroup).subscribe((data) => {
       this.votesData = data;
       this.approvedEntries = this.votesData.filter((item) => item.vote === 'YES');
       this.unApprovedEntries = this.votesData.filter((item) => item.vote === 'NO');
