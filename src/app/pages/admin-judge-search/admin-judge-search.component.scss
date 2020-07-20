@@ -126,9 +126,10 @@
     min-width: 100px;
     height: 40px;
     padding: 0 15px;
-    background: #00bbec;
+    background: #aa3551;
     white-space: nowrap;
     border-radius: 0;
+    border-color: #aa3551;
     font-size: 14px;
     color: #fff;
     transition: all .2s ease-out, color .2s ease-out;
@@ -145,7 +146,7 @@
 }
 
 .s009 .inner-form .input-field .btn-search:hover, .s009 .inner-form .input-field .btn-search:focus {
-    background: #00a7d3;
+    background: #aa3551;
 }
 
 .float-sm-right {
