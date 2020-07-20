@@ -78,6 +78,10 @@ export class CompetitionsService {
         return this.httpClient.post('http://localhost:3000/competition-entry/', data);
     }
 
+    getArtworkEntryByUserId(userId) {
+      return this.httpClient.post('http://localhost:3000/user-entries/', {userId: userId});
+    }
+
     getUserArtworkEntry() {
       return this.httpClient.post('http://localhost:3000/user-entries/', {userId: this.userId});
     }

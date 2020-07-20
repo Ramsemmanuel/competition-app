@@ -44,6 +44,8 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { AdminJudgeSearchComponent } from './pages/admin-judge-search/admin-judge-search.component';
 import { AdminJudgeProfileComponent } from './pages/admin-judge-profile/admin-judge-profile.component';
 import {DataTableModule} from "angular-6-datatable";
+import { AdminArtistSearchComponent } from './pages/admin-artist-search/admin-artist-search.component';
+import { AdminArtistProfileComponent } from './pages/admin-artist-profile/admin-artist-profile.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import {DataTableModule} from "angular-6-datatable";
     SubmissionCompletedDialogComponent,
     AdminDashboardComponent,
     AdminJudgeSearchComponent,
-    AdminJudgeProfileComponent
+    AdminJudgeProfileComponent,
+    AdminArtistSearchComponent,
+    AdminArtistProfileComponent
   ],
   imports: [
     BrowserModule,

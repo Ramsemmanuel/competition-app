@@ -68,7 +68,9 @@ export class AuthService {
     return this.httpClient.put(`http://localhost:3000/update-user`, userData)
   }
 
-  searchUser(criteria) {
+  searchUser(criteria, isArtist) {
+    if(isArtist)
+      return this.httpClient.post(`http://localhost:3000/artistsearch`,criteria);
     return this.httpClient.post(`http://localhost:3000/usersearch`,criteria);
   }
 

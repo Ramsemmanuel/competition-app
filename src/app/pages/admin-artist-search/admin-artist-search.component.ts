@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material';
 import * as XLSX from 'xlsx';  
 
 @Component({
-  selector: 'app-admin-judge-search',
-  templateUrl: './admin-judge-search.component.html',
-  styleUrls: ['./admin-judge-search.component.scss']
+  selector: 'app-admin-artist-search',
+  templateUrl: './admin-artist-search.component.html',
+  styleUrls: ['./admin-artist-search.component.scss']
 })
-export class AdminJudgeSearchComponent implements OnInit {
+export class AdminArtistSearchComponent implements OnInit {
 
   @ViewChild('TABLE', { static: false }) TABLE: ElementRef;  
   viewsForm: FormGroup;
@@ -19,7 +19,7 @@ export class AdminJudgeSearchComponent implements OnInit {
   selectedCountry: any;
   loading: boolean;
   dtData : any = [];
-  editing: boolean;
+  show: boolean;
   selectedRecord: any;
 
   constructor(private formBuilder: FormBuilder,private authProvider: AuthService,public snackBar: MatSnackBar,) {
@@ -27,10 +27,10 @@ export class AdminJudgeSearchComponent implements OnInit {
       firstName: [this.viewsData ? this.viewsData.firstName : null, Validators.nullValidator],
       lastName: [this.viewsData ? this.viewsData.lastName : null, Validators.nullValidator],
       email: [this.viewsData ? this.viewsData.email : null, Validators.nullValidator],
-      nationality: [this.viewsData ? this.viewsData.nationality : null, Validators.nullValidator],
+      userGroup: [this.viewsData ? this.viewsData.userGroup : null, Validators.nullValidator],
       dateAdded: [this.viewsData ? this.viewsData.dateAdded : null, Validators.nullValidator]
     });
-    this.viewsForm.get('nationality').setValue("");
+    this.viewsForm.get('userGroup').setValue("");
     this.viewsForm.get('dateAdded').setValue("");
    }
 
@@ -39,20 +39,20 @@ export class AdminJudgeSearchComponent implements OnInit {
 
     public OnSearch(){
       this.loading = true;
-      this.authProvider.searchUser(this.viewsForm.value,false).subscribe((data) => {
+      this.authProvider.searchUser(this.viewsForm.value, true).subscribe((data) => {
           this.loading = false;
           this.dtData = data;
           this.snackBar.open('Search completed', 'CLOSE', { duration: 5000 });
         });
     }
 
-    public Edit(item:any){
-      this.editing = true;
+    public View(item:any){
+      this.show = true;
       this.selectedRecord = item;
     }
 
     public Back(){
-      this.editing = false;
+      this.show = false;
     }
 
     public ExportTOExcel() {  

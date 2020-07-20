@@ -1,0 +1,137 @@
+<div class="s009">
+    <div  *ngIf="!show">
+        <div class="inner-form">
+            <form [formGroup]="viewsForm">
+                <div class="advance-search">
+                    <span class="desc">ARTIST SEARCH</span>
+                    <div class="row">
+                        <div class="input-field">
+                            <div class="input-select">
+                                <div class="choices__inner">
+                                    <input type="input" placeholder="Name" formControlName="firstName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select" >
+                                <div class="input-select">
+                                    <div class="choices__inner">
+                                        <input type="input" placeholder="Surname" formControlName="lastName">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <div class="input-select">
+                                    <div class="choices__inner">
+                                        <input type="input" placeholder="Email" formControlName="email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: block;">
+                        <div class="input-field" style="display: inline-block;">
+                            <div class="input-select">
+                                <div class="choices__inner">
+                                    <select class="form-control" placeholder="Country of Residence" formControlName="dateAdded">
+                                        <option value="">Registration Year</option>
+                                        <option *ngFor="let item of [2020,2021,2022,2023,2024,2025]" [value]="item">{{ item }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field" style="display: inline-block;margin-left: 20px;">
+                            <div class="input-select">
+                                <div class="choices__inner">
+                                    <select class="form-control" placeholder="Group" formControlName="userGroup">
+                                        <option value="">Group</option>
+                                        <option *ngFor="let item of ['A','B','C']" [value]="item">{{ item }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="input-field" style="display: none;">
+                            <div class="input-select">
+                                <div class="choices__inner">
+                                    <select class="form-control" id="sel1">
+                                    <option>Role</option>
+                                    <option>Adjudicator</option>
+                                    <option>User</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row third">
+                        <div class="input-field">
+                            <div class="result-count">
+                                <div class="group-btn">
+                                    <button class="btn-delete" type="reset">RESET</button>
+                                    <button class="btn btn-primary" (click)="OnSearch()">SEARCH</button>
+                                    <span *ngIf="loading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            </form>
+        </div>
+
+        
+        <div class="table-responsive" style="margin-top: 20px;" #TABLE #table>
+            <div style="padding-bottom: 10px;padding-top: 10px;">  
+                <div class="row">  
+                  <div class="col-sm-12">  
+                    <button [hidden]="!(mf.data && mf.data.length > 0)" (click)="ExportTOExcel()" class="btn btn-primary" style="float: right; margin-right:10px ;">Export</button> </div>  
+                </div>  
+            </div> 
+            <table class="table-striped table table-condensed  ff-family data-table user-list-table" [mfData]="dtData" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <!--Table head-->
+            <thead>
+                <tr>
+                <th style="width: 5%">#</th>
+                <th style="width: 20%"><mfDefaultSorter by="firstName">Name</mfDefaultSorter></th>
+                <th style="width: 20%"><mfDefaultSorter by="lastName">Surname</mfDefaultSorter></th>
+                <th style="width: 30%"><mfDefaultSorter by="email">Email</mfDefaultSorter></th>
+                <th style="width: 10%"><mfDefaultSorter by="userGroup">Group</mfDefaultSorter></th>
+                <th style="width: 15%"><mfDefaultSorter by="userType">Role</mfDefaultSorter></th>
+                <th style="width: 15%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of mf.data">
+                    <td>#</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.userGroup || 'NA'}}</td>
+                    <td>{{item.userType || 'ARTIST' }}</td>
+                    <td class="text-right"><a href="javascript:void(0)" (click)="View(item)">View</a></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                    </td>
+                </tr>
+                </tfoot>
+            <tbody>
+                
+            </tbody>
+            <!--Table body-->
+            </table>
+        </div>
+    </div>
+    <div *ngIf="show">
+        <app-admin-artist-profile [userRecord]="selectedRecord"></app-admin-artist-profile>
+       <br> 
+        <span><a href="javascript:void(0)" (click)="Back()" class="btn btn-sm btn-primary"> Back</a></span>
+    </div>
+</div>
+
