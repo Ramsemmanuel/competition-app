@@ -46,6 +46,8 @@ import { AdminJudgeProfileComponent } from './pages/admin-judge-profile/admin-ju
 import {DataTableModule} from "angular-6-datatable";
 import { AdminArtistSearchComponent } from './pages/admin-artist-search/admin-artist-search.component';
 import { AdminArtistProfileComponent } from './pages/admin-artist-profile/admin-artist-profile.component';
+import { AdminCompetitionSearchComponent } from './admin-competition-search/admin-competition-search.component';
+import { SubmissionApprovedComponent } from './pages/submission-approved/submission-approved.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { AdminArtistProfileComponent } from './pages/admin-artist-profile/admin-
     AdminJudgeSearchComponent,
     AdminJudgeProfileComponent,
     AdminArtistSearchComponent,
-    AdminArtistProfileComponent
+    AdminArtistProfileComponent,
+    AdminCompetitionSearchComponent,
+    SubmissionApprovedComponent
   ],
   imports: [
     BrowserModule,

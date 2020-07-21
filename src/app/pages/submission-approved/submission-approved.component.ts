@@ -10,11 +10,12 @@ import { ConfirmDialogService } from 'src/app/providers/modals/confirm-dialog.se
 declare var UIkit;
 
 @Component({
-  selector: 'app-submission',
-  templateUrl: './submission.component.html',
-  styleUrls: ['./submission.component.scss']
+  selector: 'app-submission-approved',
+  templateUrl: './submission-approved.component.html',
+  styleUrls: ['./submission-approved.component.scss']
 })
-export class SubmissionComponent implements OnInit {
+export class SubmissionApprovedComponent implements OnInit {
+
   entriesData: any;
   artworkData: any;
   votesData: any;
@@ -32,14 +33,12 @@ export class SubmissionComponent implements OnInit {
   buttonLabel: string;
   toggleEditComment: boolean = false;
   toggleEditReason: boolean = false;
-  allEntriesProcessed: boolean = false;
-  showNoticeOnced:any;
-  showDashboard: boolean = true;
-  voteCasted: boolean;
-  adjudicationCompletion: Date = new Date('18-Jul-2020');
-  daysLeft: number = 0;
+  
+  
+  
+  approvedEntryUserIDs:any;
+  
   userGroup:any;
-  isSubmissionDone: any;
 
   constructor(
     public competitionsProvider: CompetitionsService,
@@ -56,15 +55,6 @@ export class SubmissionComponent implements OnInit {
       comment: [this.viewsData ? this.viewsData.comment : null, Validators.nullValidator],
       reason: [this.viewsData ? this.viewsData.reason : null, Validators.nullValidator]
     });
-
-    this.isSubmissionDone = this.viewsForm.value.comment ||  this.viewsForm.value.reason  ;
-
-    //To show/hide the notice for judge
-    this.showNoticeOnced = sessionStorage.getItem('competition:notice');
-    if(!this.showNoticeOnced){
-      this.showDashboard = false;
-      sessionStorage.setItem('competition:notice','shown');
-    }
   }
 
   ngOnInit() {
@@ -83,8 +73,6 @@ export class SubmissionComponent implements OnInit {
         comment: [this.viewsData ? this.viewsData.comment : null, Validators.nullValidator],
         reason: [this.viewsData ? this.viewsData.reason : null, Validators.nullValidator]
       });
-
-      this.isSubmissionDone = this.viewsForm.value.comment ||  this.viewsForm.value.reason  ;
     })
   }
 
@@ -97,7 +85,7 @@ export class SubmissionComponent implements OnInit {
         this.initialiseArtworks();
         this.getAllVotes();
         this.getUsersFromEntries();
-        this.showDaysLeft();
+        
         
         // this.viewsForm.patchValue({comments: this.userData.comments ? this.userData.comments : '' });
 
@@ -146,7 +134,16 @@ export class SubmissionComponent implements OnInit {
   initialiseEntries() {
     this.competitionsProvider.getAllEntries(this.userGroup).subscribe((data) => {
       this.entriesData = this.groupByUser(data, 'userId');
+      this.filterApprovedRecords();
     });
+  }
+
+  filterApprovedRecords =  function(){
+    if(this.entriesData && this.votesData){
+
+      this.approvedEntryUserIDs = this.votesData.filter((v)=>{ if(v.vote =='YES') return v.entryUserId}).map(v=>v.entryUserId);
+      this.entriesData = this.entriesData.filter(e=>this.approvedEntryUserIDs.includes(e.userId))
+    }
   }
 
   initialiseArtworks() {
@@ -157,47 +154,17 @@ export class SubmissionComponent implements OnInit {
 
   getAllVotes() {
     this.competitionsProvider.getAllVotes(this.userGroup).subscribe((data) => {
+      
       this.votesData = data;
+      this.filterApprovedRecords();
       this.approvedEntries = this.votesData.filter((item) => item.vote === 'YES');
       this.unApprovedEntries = this.votesData.filter((item) => item.vote === 'NO');
       this.processedEntries = this.approvedEntries.length + this.unApprovedEntries.length;
       this.remainingEntries = this.entriesData.length - (this.approvedEntries.length + this.unApprovedEntries.length);
-      this.allEntriesProcessed = this.processedEntries == this.entriesData.length;
-
-      //Disabled the vote button if
-      if(this.processedEntries == 10)
-        this.isSubmissionDone = true;
-
-      //Show review completion popup
-      if(this.allEntriesProcessed && this.voteCasted)
-        this.confirmDialog.openConfirmDialog('Finalise adjudication', 'reviewcomplete', "send any thing here").subscribe(res => {
-          if(res) {
-            this.router.navigate(['/submission/comments']);
-          }
-        });
-
-
     });
   }
 
-  showDaysLeft() {
-    //Show days left
-    var adjudicationCompletionDate =  this.adjudicationCompletion.getDate();
-    var adjudicationCompletionMonth =  this.adjudicationCompletion.getMonth();
-    var adjudicationCompletionYear =  this.adjudicationCompletion.getFullYear();
-
-    var today = new Date();
-
-    var todayDate =  today.getDate();
-    var todayMonth =  today.getMonth();
-    var todayYear =  today.getFullYear();
-
-    if(todayYear <= adjudicationCompletionYear && todayMonth <= adjudicationCompletionMonth && todayDate <= adjudicationCompletionDate)
-    this.daysLeft = adjudicationCompletionDate - todayDate ;
-
-  }
-
-  getUserDetails(id) {
+   getUserDetails(id) {
     return this.usersIdsFromEntriesData.find((user) => user.id === id)
   }
 
@@ -241,7 +208,7 @@ export class SubmissionComponent implements OnInit {
         this.initialiseEntries();
         this.initialiseArtworks();
         this.getAllVotes();
-        this.voteCasted = true;
+        
       });
     }
     else {
@@ -253,22 +220,12 @@ export class SubmissionComponent implements OnInit {
         this.initialiseEntries();
         this.initialiseArtworks();
         this.getAllVotes();
-        this.voteCasted = true;
+        
       });
     }
   }
-  onHideNotice = function () {
-    this.showDashboard = true;
-    //Show review completion popup
-    if(this.allEntriesProcessed)
-      this.confirmDialog.openConfirmDialog('Finalise adjudication', 'reviewcomplete', "send any thing here").subscribe(res => {
-        if(res) {
-          this.router.navigate(['/submission/comments']);
-        }
-      });
-  }
-
-  onShowApproved = function(){
-    this.router.navigate(['/submission/approved']);
+  GoToHome = function () {
+    this.router.navigate(['/submissions']);
   }
 }
+

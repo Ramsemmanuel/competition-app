@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   loggedInUser: any;
   loadingUser: boolean;
   emailVerified: boolean;
+  isArtist: boolean = false;
 
   constructor(
     public snackBar: MatSnackBar,
@@ -66,9 +67,11 @@ export class AppComponent implements OnInit {
         this.loggedInUser.firstName = data[0].firstName; 
         this.loggedInUser.lastName = data[0].lastName; 
         this.loggedInUser.userType = data[0].userType; 
+
+        this.isArtist = this.loggedInUser.userType == 'ARTIST' || this.loggedInUser.userType == null;
         
         //Don't re-rout if urls are like below ones
-        if(this.router.url == '/submission/comments' || this.router.url == '/submission/complete')
+        if(this.router.url == '/submission/comments' || this.router.url == '/submission/complete' || this.router.url == '/submission/approved')
           return;
 
         if(data[0].userType === 'ADMINISTRATOR'){

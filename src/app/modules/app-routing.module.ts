@@ -8,6 +8,7 @@ import { PasswordResetComponent } from '../pages/auth/password-reset/password-re
 import {SubmissionReviewComponent} from '../pages/submission-review/submission-review.component';
 import {SubmissionReviewCompletedComponent} from '../pages/submission-review-completed/submission-review-completed.component';
 import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboard.component';
+import { SubmissionApprovedComponent } from '../pages/submission-approved/submission-approved.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'submission/complete',
     component: SubmissionReviewCompletedComponent
+  },
+  {
+    path: 'submission/approved',
+    component: SubmissionApprovedComponent
   },
   {
     path: 'password-reset/:email',

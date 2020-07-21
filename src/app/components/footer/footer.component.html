@@ -1,5 +1,5 @@
 <div class="footer-container">
-    <div class="container py-5">
+    <div class="container py-5" *ngIf = "isArtist || !loggedInUser">
         <div class="row">
             <div class="col col-lg-3">
                 <img src="assets/images/absa-and-sanava-logo.png" alt="">
@@ -32,6 +32,20 @@
             </div>
         </div>
         <div class="copyright-content">Absa Group Limited | Incorporated in the Republic of South Africa | Registration number: 1986/003934/06 | Authorised financial services and registered credit provider (NCRCP7) | JSE share code: ABG | ISIN: ZAE000255915</div>
+    </div>
+
+    <div class="container py-5" *ngIf = "!(isArtist || !loggedInUser)">
+        <div class="row">
+            <div class="col col-lg-3">
+                <img src="assets/images/absa-and-sanava-logo.png" alt="">
+            </div>
+            <div class="copyright-content" style="position: absolute;right: 10px;width: 40%;">
+                <a href="https://latelier.ftech.aws.dsarena.com/terms-of-use/">Terms of use | </a>
+                <a href="https://latelier.ftech.aws.dsarena.com/privacy-policy/">Privacy Policy | </a>
+                <a href="https://latelier.ftech.aws.dsarena.com/cookies-policy/">Cookies policy | </a>
+                Absa Group Limited | Incorporated in the Republic of South Africa | Registration number: 1986/003934/06 | Authorised financial services and registered credit provider (NCRCP7) | JSE share code: ABG | ISIN: ZAE000255915</div>
+        </div>
+        
     </div>
     <div class="footer-sliding-bar">
       
