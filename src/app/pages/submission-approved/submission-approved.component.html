@@ -8,29 +8,39 @@
     </div>
   
     <div class="uk-flex uk-flex-center text-center uk-margin uk-margin-large-bottom" *ngIf="entriesData?.length > 0">
-      <div class="uk-flex-1">
-        <p class="count-title count-border">Processed</p>
-        <div class="judge-process">
-        <h3 class="mt-0 count">{{ processedEntries }}/{{ entriesData?.length }}</h3>
-      </div>
-      </div>
       <div class="uk-flex-1 uk-margin-left">
-        <p class="count-title count-border">Remaining</p>
-        <div class="judge-process2">
-        <h3 class="mt-0 count2">{{ remainingEntries }}/{{ entriesData?.length }}</h3>
-        </div>
-      </div>
-      <div class="uk-flex-1 uk-margin-left">
-        <p class="count-title count-border">Approved</p>
+        <p class="count-title">Approved</p>
         <div class="judge-process3">
         <h3 class="mt-0 count3">{{ approvedEntries?.length }}/{{ entriesData?.length }}</h3>
         </div>
       </div>
+      <div class="uk-flex-1">
+      <!--
+        <p class="count-title count-border">Processed</p>
+        <div class="judge-process">
+        <h3 class="mt-0 count">{{ processedEntries }}/{{ entriesData?.length }}</h3>
+      </div>
+    -->
+      </div>
       <div class="uk-flex-1 uk-margin-left">
+        <!--        
+        <p class="count-title count-border">Remaining</p>
+        <div class="judge-process2">
+        <h3 class="mt-0 count2">{{ remainingEntries }}/{{ entriesData?.length }}</h3>
+        </div>
+        -->
+
+      </div>
+     
+      <div class="uk-flex-1 uk-margin-left">
+        <button class="btn btn-sm ng-star-inserted" type="button" (click)="GoToHome()" style="color: #fff;background-color: #800035;margin-top: 50px;">Back</button>
+
+        <!--
         <p class="count-title">Not Approved</p>
         <div class="judge-process4">
         <h3 class="mt-0 count4">{{ unApprovedEntries?.length }}/{{ entriesData?.length }}</h3>
         </div>
+        -->
       </div>
     </div>
   
@@ -48,7 +58,7 @@
                         <img src="{{ item.imageUrl }}" alt="" uk-cover>
                         <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom artwork-caption">
                             <h3 class="uk-margin-remove">{{ item.artworkDescription || 'No title' }}</h3>
-                            <h4 class="uk-margin-remove">{{ item.artworkMedium || 'No medium' }} </h4>
+                          <!--  <h4 class="uk-margin-remove">{{ item.artworkMedium || 'No medium' }} </h4> -->
                         </div>
                     </li>
                 </ul>
@@ -102,7 +112,6 @@
   
     
   
-    <button class="btn btn-sm ng-star-inserted" type="button" (click)="GoToHome()" style="color: #fff;background-color: #800035;margin-top: 50px;">Back</button>
   </div>
   
   <hr style="margin: 0 -16px; border-bottom: #960528 solid 2px !important; padding-top: 55px !important;">

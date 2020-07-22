@@ -48,7 +48,7 @@
                       <img src="{{ item.imageUrl }}" alt="" uk-cover>
                       <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom artwork-caption">
                           <h3 class="uk-margin-remove">{{ item.artworkDescription || 'No title' }}</h3>
-                          <h4 class="uk-margin-remove">{{ item.artworkMedium || 'No medium' }} </h4>
+                         <!-- <h4 class="uk-margin-remove">{{ item.artworkMedium || 'No medium' }} </h4> -->
                       </div>
                   </li>
               </ul>
@@ -66,7 +66,7 @@
               </svg>
               </button>
             
-            <button class="uk-button uk-flex-1 btn-primary btn-No" style="height: 50px;" (click)="castVote('NO', entry)" [disabled]="isSubmissionDone">
+            <button class="uk-button uk-flex-1 btn-primary btn-No" style="height: 50px;" (click)="castVote('NO', entry)">
               <svg class="bi bi-x-circle" width="30" height="30" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
@@ -107,7 +107,7 @@
 
   <form class="form-signin" style="display: none;" [formGroup]="viewsForm" >
     <div class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Comment" formControlName="comment" [attr.disabled]="!allEntriesProcessed?'disabled':null"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Overall Impression" formControlName="comment" [attr.disabled]="!allEntriesProcessed?'disabled':null"></textarea>
     </div>
     <div class="form-group">
       <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" placeholder="Reason" formControlName="reason" [attr.disabled]="!allEntriesProcessed?'disabled':null"></textarea>
