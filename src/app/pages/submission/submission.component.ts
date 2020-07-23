@@ -165,8 +165,8 @@ export class SubmissionComponent implements OnInit {
       this.allEntriesProcessed = this.processedEntries == this.entriesData.length;
 
       //Disabled the vote button if
-      if(this.processedEntries == 10)
-        this.isSubmissionDone = true;
+      if(this.approvedEntries == 10)
+        this.isApprovedEntriesLimitDone = true;
 
       //Show review completion popup
       if(this.allEntriesProcessed && this.voteCasted)
