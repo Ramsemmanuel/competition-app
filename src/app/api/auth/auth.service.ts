@@ -74,6 +74,14 @@ export class AuthService {
     return this.httpClient.post(`http://localhost:3000/usersearch`,criteria);
   }
 
+  searchCompetitorUsers(criteria) {
+    return this.httpClient.post(`http://localhost:3000/competitorsearch`,criteria);
+  }
+
+  result(criteria) {
+    return this.httpClient.post(`http://localhost:3000/result`,criteria);
+  }
+
   logoutUser() {
     sessionStorage.removeItem('competition:notice');
     return sessionStorage.removeItem('competition:uuid');

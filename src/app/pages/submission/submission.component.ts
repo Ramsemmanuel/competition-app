@@ -39,7 +39,7 @@ export class SubmissionComponent implements OnInit {
   adjudicationCompletion: Date = new Date('30-Jul-2020');
   daysLeft: number = 0;
   userGroup:any;
-  isSubmissionDone: any;
+  isSubmissionDone: boolean = false;
   isApprovedEntriesLimitDone : boolean = false;
 
   constructor(
@@ -58,7 +58,7 @@ export class SubmissionComponent implements OnInit {
       reason: [this.viewsData ? this.viewsData.reason : null, Validators.nullValidator]
     });
 
-    this.isSubmissionDone = this.viewsForm.value.comment ||  this.viewsForm.value.reason  ;
+    this.isSubmissionDone = this.viewsForm.value.comment &&  this.viewsForm.value.reason ? true : false;
 
     //To show/hide the notice for judge
     this.showNoticeOnced = sessionStorage.getItem('competition:notice');
@@ -85,7 +85,8 @@ export class SubmissionComponent implements OnInit {
         reason: [this.viewsData ? this.viewsData.reason : null, Validators.nullValidator]
       });
 
-      this.isSubmissionDone = this.viewsForm.value.comment ||  this.viewsForm.value.reason  ;
+      debugger;
+      this.isSubmissionDone = this.viewsForm.value.comment &&  this.viewsForm.value.reason ? true : false ;
     })
   }
 
@@ -230,13 +231,13 @@ export class SubmissionComponent implements OnInit {
       id: this.idGeneratorProvider.generateId(),
       voterId: this.userId,
       modifiedDate: null,
-      dateAdded: Date.now(),
+      dateAdded: (new Date()).toLocaleDateString(),
       entryUserId: item.userId,
       vote: vote
     };
 
     if(!this.checkIfVoteExists(item.userId)) {
-      console.log(voteData);
+      //console.log(voteData);
       this.competitionsProvider.addVote(voteData).subscribe((data) => {
         this.snackBar.open('Vote updated successfully', 'CLOSE', { duration: 5000 });
         this.initialiseEntries();
@@ -246,7 +247,7 @@ export class SubmissionComponent implements OnInit {
       });
     }
     else {
-      voteData.modifiedDate = Date.now();
+      voteData.modifiedDate = (new Date()).toLocaleDateString();
       voteData = this.checkIfVoteExists(item.userId);
       voteData.vote = vote;
       this.competitionsProvider.updateVote(voteData).subscribe((data) => {

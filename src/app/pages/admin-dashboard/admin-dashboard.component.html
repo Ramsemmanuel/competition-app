@@ -40,19 +40,19 @@
               </a>
             </li>
             <li class="nav-item has-treeview">
-              <a href="javascript:void()" class="nav-link" (click)="Action('COMPETITION', $event)">
+              <a href="javascript:void()" class="nav-link" (click)="Action('COMPETITIOR_SEARCH', $event)">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                    Competition 
+                    Competitior Search
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
             </li>
             <li class="nav-item has-treeview">
-              <a href="javascript:void()" class="nav-link">
+              <a href="javascript:void()" class="nav-link" (click)="Action('COMPETITION_RESULT', $event)">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Grouping
+                  Competition Result
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -123,7 +123,7 @@
             <!-- ./col -->
             <div class="col-lg-4 col-6">
               <!-- small card -->
-              <div class="small-box bg-warning" (click)="Action('COMPETITION_SEARCH', $event)" title ="Competition" style="cursor: pointer;">
+              <div class="small-box bg-warning" (click)="Action('COMPETITIOR_SEARCH', $event)" title ="Competition" style="cursor: pointer;">
                 <div class="inner">
                     <img src="../assets/images/admin.png">
                 </div>
@@ -145,6 +145,8 @@
       <section class="content">
         <app-admin-judge-search *ngIf="displayComponent=='ADJUDICATOR_SEARCH'"></app-admin-judge-search>
         <app-admin-artist-search *ngIf="displayComponent=='ARTIST_SEARCH'"></app-admin-artist-search>
+        <app-admin-competition-search *ngIf="displayComponent=='COMPETITIOR_SEARCH'"></app-admin-competition-search>
+        <app-admin-competition-result *ngIf="displayComponent=='COMPETITION_RESULT'"></app-admin-competition-result>
       </section>
       <!-- /.content -->
   
