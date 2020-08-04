@@ -1,5 +1,15 @@
 <div>
     <hr style="margin: -15px -15px; border-bottom: #960528 solid 2px !important;">
+    <div class="row">
+      <div class="col">
+        <h2 class="group-title">You are assigned to Group {{userGroup}}</h2>
+      </div>
+      <div class="col" style="margin-top: 23px; margin-left: 56%;">
+        <button class="btn btn-sm ng-star-inserted" type="button" (click)="GoToHome()" style="color: #fff;background-color: #800035;">Back to Adjudication</button>
+      </div>
+     
+    </div>
+    
     <h2 class="uk-text-center group-title">Approved Entries</h2>
     <hr style="margin: 0 -16px; border-bottom: #960528 solid 2px !important;">
   
@@ -32,16 +42,6 @@
 
       </div>
      
-      <div class="uk-flex-1 uk-margin-left">
-        <button class="btn btn-sm ng-star-inserted" type="button" (click)="GoToHome()" style="color: #fff;background-color: #800035;margin-top: 50px;">Back</button>
-
-        <!--
-        <p class="count-title">Not Approved</p>
-        <div class="judge-process4">
-        <h3 class="mt-0 count4">{{ unApprovedEntries?.length }}/{{ entriesData?.length }}</h3>
-        </div>
-        -->
-      </div>
     </div>
   
     <div class="uk-position-relative uk-visible-toggle entries-container" tabindex="-1" uk-slider="center: true;finite: true;" *ngIf="entriesData?.length > 0">

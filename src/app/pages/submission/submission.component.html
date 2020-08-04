@@ -1,6 +1,17 @@
 <div *ngIf="showDashboard">
   <hr style="margin: -15px -15px; border-bottom: #960528 solid 2px !important;">
-  <h2 class="uk-text-center group-title">You are assigned to Group {{userGroup}}</h2>
+  
+  <div class="row">
+    <div class="col">
+      <h2 class="group-title">You are assigned to Group {{userGroup}}</h2>
+    </div>
+    <div class="col" style="margin-top: 23px; margin-left: 56%;">
+      <button class="btn btn-sm ng-star-inserted" type="button" (click)="onShowApproved()" style="color: #fff;background-color: #800035;">Review Approved Portfolios</button>
+    </div>
+   
+  </div>
+
+
   <hr style="margin: 0 -16px; border-bottom: #960528 solid 2px !important;">
 
   <div class="uk-text-center uk-margin-large" *ngIf="entriesData?.length < 1">
@@ -118,7 +129,6 @@
   </form>
   <div *ngIf="!allEntriesProcessed" style="text-align: center;padding-top: 30px;font-size: 20px;color: #960528;padding-left: 40px;"><span>..you have <b>{{daysLeft}} days left</b> to complete your adjudication</span></div>
 
-  <button class="btn btn-sm ng-star-inserted" type="button" (click)="onShowApproved()" style="color: #fff;background-color: #800035;margin-top: 50px;">Approved Artworks</button>
 </div>
 <div *ngIf="!showDashboard" style="padding: 10%;">
   <h2 style="width: 100%; color: #4a4848;">Important Notice</h2>

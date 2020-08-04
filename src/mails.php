@@ -42,13 +42,6 @@ if(empty($errors))
 	$port ="465";
 	$username = "sightgroupsaco";
 	$password = "Ramsen@12";
-	
-	$smtp = Mail::factory('smtp',
-	  array ('host' => $host,
-		'auth' => true,
-		'port' => $port,
-		'username' => $username,
-		'password' => $password));
 
 
 	$headers .= "MIME-Version: 1.0\r\n";
@@ -58,7 +51,10 @@ if(empty($errors))
 	$headers .= "From: $from_email\n";
 	$headers .= "Reply-To: $from_email";
 
-	mail = $smtp->send($to_email,$email_subject,$email_body,$headers);
+	$smtp = Mail::factory('smtp', array ('host' => $host, 'port' => $port, 'auth' => true, 'username' => $username, 'password' => $password));
+	
+
+	$mail = $smtp->send($to_email,$email_subject,$email_body,$headers);
 
 	$response_array['status'] = 'success';
 	$response_array['from'] = $from_email;

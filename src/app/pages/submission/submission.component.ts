@@ -36,7 +36,7 @@ export class SubmissionComponent implements OnInit {
   showNoticeOnced:any;
   showDashboard: boolean = true;
   voteCasted: boolean;
-  adjudicationCompletion: Date = new Date('30-Jul-2020');
+  adjudicationCompletion: Date = new Date('15-August-2020');
   daysLeft: number = 0;
   userGroup:any;
   isSubmissionDone: boolean = false;

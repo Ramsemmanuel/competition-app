@@ -80,8 +80,8 @@
 
         <div [hidden]="!toggleEdit">
             <form class="form-signin" [formGroup]="form">
-                <mat-form-field style="width: 100%;">
-                    <textarea matInput placeholder="Tell us about your Artwork" formControlName="bio"></textarea>
+                <mat-form-field hintLabel="Max 150 characters" style="width: 100%;">
+                    <textarea matInput [maxlength]="150" placeholder="Tell us about your Artwork" formControlName="bio"></textarea>
                 </mat-form-field>
                 <div class="text-right">
                     <button class="btn btn-outline-primary" [disabled]="!form.valid" (click)="saveBio()">Save</button>
