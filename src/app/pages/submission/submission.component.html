@@ -51,7 +51,7 @@
             <div class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slideshow="clsActivated: uk-transition-active;">
               <div class="uk-padding-small artwork-intro uk-background-muted">
                 <h4>Portfolio statement</h4>
-                <p *ngIf="usersIdsFromEntriesData" class="uk-margin-remove">{{ getUserDetails(entry.userId)?.comment || 'Not provided' }}</p>
+                <p *ngIf="usersIdsFromEntriesData" class="uk-margin-remove">{{ getUserDetails(entry.userId)?.bio || 'Not provided' }}</p>
               </div>
               <ul class="uk-slideshow-items">
                   <li *ngFor="let item of entry.data" style="cursor: pointer;" (click)="onArtworkView(item)">
