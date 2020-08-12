@@ -70,13 +70,13 @@ export class AdminArtistProfileComponent implements OnInit {
       //link.dispatchEvent(evt);
       //link.click();
       
+      debugger
 
-
-      /*const fileRef = this.storage.storage.refFromURL(link.href);
-      fileRef.getDownloadURL().then(downloadURL => {
-
+      const fileRef = this.storage.storage.refFromURL(link.href);
+      fileRef.child(link.href).getDownloadURL().then(downloadURL => {
+        debugger;
         if(downloadURL){
-          debugger;
+          
           // This can be downloaded directly:
           var xhr = new XMLHttpRequest();
           xhr.responseType = 'blob';
@@ -86,9 +86,9 @@ export class AdminArtistProfileComponent implements OnInit {
           xhr.open('GET', downloadURL);
           xhr.send();
         }
-    });*/
+    });
 
-    var xhr = new XMLHttpRequest();
+    /*var xhr = new XMLHttpRequest();
           xhr.responseType = 'blob';
           xhr.onload = function(event) {
             var blob = xhr.response;
@@ -97,7 +97,7 @@ export class AdminArtistProfileComponent implements OnInit {
           xhr.send();
 
       document.body.removeChild(link);
-      console.log("Downloading...");
+      console.log("Downloading...");*/
 
     }
 }
