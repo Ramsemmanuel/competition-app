@@ -11,16 +11,16 @@
       </div>
     </div>
     
-    <h2 class="uk-text-center group-title">Approved Entries</h2>
+  
     <hr style="margin: 0 -16px; border-bottom: #960528 solid 2px !important;">
   
     <div class="uk-text-center uk-margin-large" *ngIf="entriesData?.length < 1">
       <p>No entries submitted yet</p>
     </div>
-  
+    <h2 class="uk-text-center group-title">Approved Entries</h2>
     <div class="uk-flex uk-flex-center text-center uk-margin uk-margin-large-bottom" *ngIf="entriesData?.length > 0">
       <div class="uk-flex-1 uk-margin-left">
-        <p class="count-title">Approved</p>
+        
         <div class="judge-process3">
         <h3 class="mt-0 count3">{{ approvedEntries?.length }}/{{ entriesData?.length }}</h3>
         </div>
