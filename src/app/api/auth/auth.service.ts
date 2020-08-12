@@ -25,7 +25,9 @@ export class AuthService {
   API_URL: 'http://localhost:3000';
 //API_URL: 'http://sightgroupsa.co.za'
   private emailUrl = 'http://www.sightgroupsa.co.za/mails.php';
-  private entrySubmissionEmailUrl = 'http://www.sightgroupsa.co.za/entrysubmissionmails.php';
+ // private entrySubmissionEmailUrl = 'http://www.sightgroupsa.co.za/entrysubmissionmails.php';
+
+ private entrySubmissionEmailUrl = 'C:/Users/manny richarte/Documents/mail/email.php';
 
   constructor(
     public afAuth: AngularFireAuth,
