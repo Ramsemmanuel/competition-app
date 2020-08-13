@@ -47,34 +47,46 @@ export class AdminArtistProfileComponent implements OnInit {
   }
 
   DownloadArtwork(){
-    this.downloading = true;
+    //this.downloading = true;
     this.download()
   }
 
    download() {
     let imgs = document.querySelectorAll(".card-body.Active .artwork-thumbnail")
+    let totalFilesToDownload = imgs.length;
+    let downloading = this.downloading
     for (var i = 0; i < imgs.length; i++) {
-      var img = imgs[i];
-      var link = document.createElement("a");
-      link.href = img["style"].backgroundImage.replace('url("','').replace('")','');
-      link.download = this.GetFileName(link.href);
-      link.target="_blank";
-      link.style.display = "none";
-      /*var evt = new MouseEvent("click", {
-          "view": window,
-          "bubbles": false,
-          "cancelable": true
-      });*/
-
-      document.body.appendChild(link);
-      //link.dispatchEvent(evt);
-      //link.click();
+      (function(i) {
+        var img = imgs[i];
+        let currentImagURL = img["style"].backgroundImage.replace('url("','').replace('")','');
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = function(event) {
+            var blob = xhr.response;
+            var link = document.createElement("a");
+            link.href =  window.URL.createObjectURL(blob);;
+            link.download = "";
+            link.target="_blank";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            window.URL.revokeObjectURL(blob)
+            document.body.removeChild(link)
+            totalFilesToDownload --;
+            if(totalFilesToDownload == 0)
+              downloading =false;
+        };
+        xhr.open('GET', currentImagURL);
+        xhr.send();
+    })(i);
       
-      debugger
+      /*
 
-      const fileRef = this.storage.storage.refFromURL(link.href);
-      fileRef.child(link.href).getDownloadURL().then(downloadURL => {
+      const fileRef = this.storage.storage.refFromURL(currentImagURL);
+      fileRef.getDownloadURL().then(downloadURL => {
         debugger;
+        
+
         if(downloadURL){
           
           // This can be downloaded directly:
@@ -82,12 +94,42 @@ export class AdminArtistProfileComponent implements OnInit {
           xhr.responseType = 'blob';
           xhr.onload = function(event) {
             var blob = xhr.response;
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);;
+            link.download = GetFileName(downloadURL);
+            link.target="_blank";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link)
           };
           xhr.open('GET', downloadURL);
           xhr.send();
         }
-    });
+    }).catch(function(error) {
 
+      console.log(error)
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/object-not-found':
+          // File doesn't exist
+          break;
+    
+        case 'storage/unauthorized':
+          // User doesn't have permission to access the object
+          break;
+    
+        case 'storage/canceled':
+          // User canceled the upload
+          break;
+    
+          case 'storage/unknown':
+          // Unknown error occurred, inspect the server response
+          break;
+      }
+    });;
+    */
     /*var xhr = new XMLHttpRequest();
           xhr.responseType = 'blob';
           xhr.onload = function(event) {
