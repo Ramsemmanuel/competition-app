@@ -11,20 +11,15 @@
       </div>
     </div>
     
-    <h2 class="uk-text-center group-title">Approved Entries</h2>
+  
     <hr style="margin: 0 -16px; border-bottom: #960528 solid 2px !important;">
   
     <div class="uk-text-center uk-margin-large" *ngIf="entriesData?.length < 1">
       <p>No entries submitted yet</p>
     </div>
-  
+    <h2 class="uk-text-center group-title">Approved Entries Portfolio</h2>
     <div class="uk-flex uk-flex-center text-center uk-margin uk-margin-large-bottom" *ngIf="entriesData?.length > 0">
-      <div class="uk-flex-1 uk-margin-left">
-        <p class="count-title">Approved</p>
-        <div class="judge-process3">
-        <h3 class="mt-0 count3">{{ approvedEntries?.length }}/{{ entriesData?.length }}</h3>
-        </div>
-      </div>
+     
       <div class="uk-flex-1">
       <!--
         <p class="count-title count-border">Processed</p>
@@ -32,6 +27,12 @@
         <h3 class="mt-0 count">{{ processedEntries }}/{{ entriesData?.length }}</h3>
       </div>
     -->
+      </div>
+      <div class="uk-flex-1 uk-margin-left" style="margin-left: 107px !important;">
+        
+        <div class="judge-process3">
+        <h3 class="mt-0 count3">{{ approvedEntries?.length }}/{{ entriesData?.length }}</h3>
+        </div>
       </div>
       <div class="uk-flex-1 uk-margin-left">
         <!--        
@@ -101,8 +102,10 @@
           <button class="uk-modal-close-outside" type="button" uk-close></button>
           <div class="uk-grid-collapse uk-child-width-1-1@s uk-flex-middle" uk-grid>
             <div class="uk-background-contain artwork-preview-image" [ngStyle]="{'background-image': 'url('+ artworkOnPreview?.imageUrl +')'}" uk-height-1-1></div>
-            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-light">
-              <p>{{ artworkOnPreview?.artworkDescription || 'No title' }}</p>
+          <div class="uk-position-bottom uk-text-center uk-light">
+             <!-- 
+              <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-light"> 
+              <p>{{ artworkOnPreview?.artworkDescription || 'No title' }}</p> -->
             </div>
         </div>
       </div>

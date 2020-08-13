@@ -28,8 +28,7 @@ if(empty($errors))
 	$from_name = 'No-reply';
 	$subject = 'Well Done!!! Your entry has been successfully submited';
 
-	$to_email = $request->email;
-	//str_replace('{placeholder}',$to_email, $message);
+gi	//str_replace('{placeholder}',$to_email, $message);
 	
 	$content = $message;
 

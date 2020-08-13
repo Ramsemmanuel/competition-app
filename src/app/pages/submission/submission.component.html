@@ -100,8 +100,10 @@
         <button class="uk-modal-close-outside" type="button" uk-close></button>
         <div class="uk-grid-collapse uk-child-width-1-1@s uk-flex-middle" uk-grid>
           <div class="uk-background-contain artwork-preview-image" [ngStyle]="{'background-image': 'url('+ artworkOnPreview?.imageUrl +')'}" uk-height-1-1></div>
-          <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-light">
-            <p>{{ artworkOnPreview?.artworkDescription || 'No title' }}</p>
+         <div class="uk-position-bottom uk-text-center uk-light">
+          <!-- 
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-light">
+            <p>{{ artworkOnPreview?.artworkDescription || 'No title' }}</p> -->
           </div>
       </div>
     </div>
