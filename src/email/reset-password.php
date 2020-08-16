@@ -55,11 +55,14 @@ try {
     $to_email = $request->email;
 
 
+    
+
+
     // Create a message
     $message = new Swift_Message();
  
     // Set a "subject"
-    $message->setSubject('Well Done!!! Your entry has been successfully submited');
+    $message->setSubject('Reset Password');
  
     // Set the "From address"
     $message->setFrom(['ramsemmanuel@gmail.com' => 'Latelier Competition']);
@@ -70,7 +73,7 @@ try {
 
 
     // Add "CC" address [Use setCc method for multiple recipients, argument should be array]
-    //$message->addCc('dkmunwana@gmail.com','Emmanuel Ramanyimi');
+   // $message->addCc('dkmunwana@gmail.com','Emmanuel Ramanyimi');
  
     // Add "BCC" address [Use setBcc method for multiple recipients, argument should be array]
    // $message->addBcc('recipient@gmail.com', 'recipient name');
@@ -204,10 +207,10 @@ try {
                   <tr>
                     <td height="30" style="height:30px; font-size:0px; line-height:0px;" class="eu_h20">&nbsp;</td>
                   </tr>
-            <tr>
+                  <tr>
                               <td align="center" valign="top" style="background-color:#FFFFFF; padding:0 30px;" class="em_aside10"><table width="91%" border="0" cellspacing="0" cellpadding="0" align="center">
                                  <tr>
-                      <tr>
+                                      <tr>
                                         <td height="44" style="height:44px;" class="em_h20">&nbsp;</td>
                                       </tr>
                                     <td align="center" valign="top"><table border="0" cellspacing="0" cellpadding="0" align="left" class="em_wrapper">
@@ -230,7 +233,7 @@ try {
                                   <tr>
                                     <td height="16" style="font-size:0px; line-height:0px; height:16px;" class="em_h20">&nbsp;</td>
                                   </tr>
-            <tr>
+                  <tr>
                                             <td width="450" align="center" valign="middle" class="em_clear"><a href="#" target="_blank" style="text-decoration:none;"><img editable="true" src="images/1x/line.png" width="450" height="1" alt="absa" border="0" style="display:block; font-family:Arial, sans-serif; font-size:18px; line-height:25px; text-align:center; color:#ffffff; font-weight:bold; max-width:450px;" class="em_w90" /></a></td>
                                             <td width="186" style="width:186px;" class="em_wrapper em_clear">&nbsp;</td>
                                             <tr>
@@ -243,7 +246,7 @@ try {
                   
                   <tr>
                     <td align="center" valign="top" bgcolor="#ffffff"><table width="598" height="229" border="0" align="center" cellpadding="0" cellspacing="0" class="eu_wrapper" style="width:450px;">
-              
+                        
                         <tr>
                           <td align="center" valign="top"><table width="450" border="0" cellspacing="0" cellpadding="0" class="eu_wrapper" style="width:450px;">
                               <tr>
@@ -253,14 +256,14 @@ try {
                                           <tr>
                                             <td align="center" valign="top" style="padding:10px 10px 10px 10px;" class="eu_padlrtb"><table width="120" style="width:120px;" border="0" cellspacing="0" cellpadding="0" class="eu_wrapper" align="left">
                                               
-                          <tr>
-                          <td height="35" style="height:35px;">&nbsp;</td>
-                            </tr>
-                          <tr>
-                          <td height="15" style="height:15px;">&nbsp;</td>
-                            </tr>
-                          <tr>
-                             <tr>
+                                                <tr>
+                                                <td height="35" style="height:35px;">&nbsp;</td>
+                                                  </tr>
+                                                <tr>
+                                                <td height="15" style="height:15px;">&nbsp;</td>
+                                                  </tr>
+                                                <tr>
+                                                   <tr>
                                       <td align="center" valign="middle" height="29" class="eu_pbottom eu_auto"><img editable="true" src="images/1x/gest1.png" width="29" height="110" alt="" border="0" style="display:block;" /></td>
                                     </tr>
                                                   
@@ -274,20 +277,33 @@ try {
                                               </table></td>
                                           </tr>
                                         </table></td>
-                                      <td align="center" valign="top" bgcolor="#ffffff" class="eu_padlrtb" style="padding:60px 0px 0px 0px;"><table width="518" height="137" border="0" align="left" cellpadding="0" cellspacing="0" class="eu_wrapper" style="width:250px;">
+                                      <td align="center" valign="top" bgcolor="#ffffff" class="eu_padlrtb" style="padding:60px 0px 0px 0px;"><table width="418" height="137" border="0" align="left" cellpadding="0" cellspacing="0" class="eu_wrapper" style="width:220px;">
                                                 <tr>
-                                                  <td align="center" valign="middle" class="eu_white" style="font-family:Arial, sans-serif; font-size:21px; line-height:24px; color:#d9762d;font-weight:bold;"><strong><strong>You have now successfullyentered the 2020 Absa L’Atelier</strong></strong></td>
+                                                  <td align="center" valign="middle" class="eu_white" style="font-family:Arial, sans-serif; font-size:21px; line-height:17px; color:#6f6464;font-weight:bold;">Reset your password</td>
                                                 </tr>
                                                 <tr>
-                                    <td height="30" style="height:30px;" class="eu_h20">&nbsp;</td>
-                                  </tr>
-                                                 </table></td>
-                      
+                                                    <td height="30" style="height:30px;" class="eu_h20">&nbsp;</td>
+                                                  </tr>
+                                                <tr>
+                                        <td align="center" valign="top"><table width="107" style="width:107px; border:1px #ffffff solid; border-radius:2px; display:block;" border="0" cellspacing="0" cellpadding="0" align="center">
+                                          <tr>
+                                            <td align="center" valign="top" bgcolor="#800d2b"><table width="107" style="width:107px;" border="0" cellspacing="0" cellpadding="0" align="center">
+                                              <tr>
+                                                <td class="em_white" height="30" align="center" valign="middle" style="font-family:Arial, sans-serif; font-size:14px; line-height:17px; color:#ffffff; font-weight:bold;"><a href="http://localhost:4200/#/password-reset/'. $to_email .' " target="_blank" style="text-decoration:none; color:#ffffff; line-height:30px; display:block;">Reset now</a></td>
+                                              </tr>
+                                            </table>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                        </td>
+                                      </tr>
+                                              </table></td>
+                                        
                                       <td align="center" valign="top" class="eu_wrapper1" bgcolor="#ffffff"><table width="120" border="0" cellspacing="0" cellpadding="0" align="left" class="eu_wrapper" bgcolor="#ffffff">
                                           <tr>
                                             <td align="center" valign="top" style="padding:10px 10px 10px 14px;" class="eu_padlrtb"><table width="127" class="eu_wrapper" style="width:127px;" border="0" cellspacing="0" cellpadding="0" align="left">
                                                <tr>
-                             <tr>
+                                                   <tr>
                                       <td align="center" valign="middle" height="47" class="eu_pbottom eu_auto"><img editable="true" src="images/1x/gest2.png" width="66" height="209" alt="" border="0" style="display:block;" /></td>
                                     </tr>
                                             </tr>
@@ -309,21 +325,17 @@ try {
                   </tr>
                   
                   <tr>
-                    <td valign="top" align="left"><table align="center" class="eu_wrapper" width="590" border="0" cellspacing="0" cellpadding="0" style="width:590px;" bgcolor="#ffffff">
+                    <td valign="top" align="center"><table align="center" class="eu_wrapper" width="590" border="0" cellspacing="0" cellpadding="0" style="width:590px;" bgcolor="#ffffff">
                         <tr>
                           <td valign="top" align="center" style="padding:28px 20px 28px 30px;" class="eu_pad1"><table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td height="17" align="left" valign="top" class="eu_white" style="font-family:Arial, sans-serif; font-size:14px; line-height:16px; color:#2d2323;"><multiline style="font-family:Arial, sans-serif; font-size:14px; line-height:16px; color:#2d2323; " class="eu_color1">
                                     <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
-                                        <td class="eu_color1" valign="top" align="left" style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#2d2323; "><multiline style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#2d2323; " class="eu_color1">Once entries to the competition have closed on xxx, the online adjudication and selection of artworks will commence.<br/><br/>
-                      Adjudication of all artworks is done by an independent panel of adjudicators appointed by the partners, namely the South African National Association for the Visual Arts (SANAVA) and Absa. For the Gerard Sekoto Awards specifically, the adjudicators are appointed by the Alliance Française, the Institut Français d’Afrique du Sud and the French Embassy in South Africa.<br/><br/>
-                      Each adjudicator is chosen for their particular field of expertise within the visual arts, including sculpture, painting, digital, printmaking and so forth, and each contributes to the assessment of what is deemed to be quality. The criteria for the adjudication revolve around matters of technical execution, conceptual and thematic engagement, freshness of artistic vision within the context of African contemporary art, and finally – and probably the most difficult element – aesthetic appeal.<br/><br/>
-                      The adjudication for the Gerard Sekoto Award will be based on the body of artworks and the CV of the artist. Through their CV the artist must have demonstrated a willingness to grow and develop themselves as an artist, using the opportunities provided to them (i.e. participation in group exhibitions, solo exhibitions, previously having entered the Absa L’Atelier and participation on other art platforms).<br/><br/>
-                      Winning artists in each group (Group A, B, C) as well as the Gerard Sekoto award category will be announced in September 2020.</multiline>
-                                        </td>
+                                        <td class="eu_color1" valign="top" align="center" style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#2d2323; "><multiline style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#2d2323; " class="eu_color1">Someone requested a password reset on this account. </multiline>
+                                        <multiline style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#2d2323; " class="eu_color1"><br/>If it wasn’t you, you can safely ignore this email<br/> and your password will remain the same. </multiline></td>
                                       </tr>
-                    </table>
+                                    </table>
                                   </multiline></td>
                               </tr>
                             </table></td>
@@ -365,8 +377,8 @@ try {
                               </tr>
                               <tr>
                                         <td  valign="top" align="left" style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#ffffff; "><multiline style="font-size:14px; line-height:18px; font-family:Arial, sans-serif; color:#ffffff; " ><br />
-                  Monday-Friday, 08:00-16:30<br />
-                  Support gallery@absa.co.za </strong> </multiline></td>
+                                Monday-Friday, 08:00-16:30<br />
+                                Support gallery@absa.co.za </strong> </multiline></td>
                                       </tr>
                               <tr>
                                 <td height="25" style="height:25px; font-size:1px; line-height:1px;" class="eu_h20">&nbsp;</td>
@@ -389,7 +401,7 @@ try {
     </table>
     <!-- == //Footer Section == -->
     </body>
-    </html>
+    </html>    
     ', 'text/html');
  
     // Send the message

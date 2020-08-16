@@ -24,10 +24,10 @@ export class AuthService {
   uuid = UUID.UUID();
   API_URL: 'http://localhost:3000';
 //API_URL: 'http://sightgroupsa.co.za'
-  private emailUrl = 'http://www.sightgroupsa.co.za/mails.php';
+  private emailUrl = 'http://www.sightgroupsa.co.za/email/reset-password.php';
  // private entrySubmissionEmailUrl = 'http://www.sightgroupsa.co.za/entrysubmissionmails.php';
 
- private entrySubmissionEmailUrl = 'C:/Users/manny richarte/Documents/mail/email.php';
+ private entrySubmissionEmailUrl = 'http://www.sightgroupsa.co.za/email/submissionentry.php';
 
   constructor(
     public afAuth: AngularFireAuth,
